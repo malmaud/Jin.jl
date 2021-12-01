@@ -1,5 +1,5 @@
 # Jin
-![CI passing](https://github.com/malmaud/Clockwork.jl/actions/workflows/ci.yml/badge.svg)
+![CI passing](https://github.com/malmaud/Jin.jl/actions/workflows/ci.yml/badge.svg)
 
 A Julia version of the Python [Gin configuration library](https://github.com/google/gin-config).
 
