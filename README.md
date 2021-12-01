@@ -88,7 +88,7 @@ calling `f(x=5)` will return 5 no matter what `f.x` is set to in the configurati
 **TODO**: More robust documentation.
 
 # Future work
-Currently this package only supports the most basic usage of Gin - setting the default value of a function to a literal. In the future, we'll add support for additioanl features in Gin, such as allowing values to be references to other values in your Julia program or configuration.
+Currently this package only supports the most basic usage of Gin - setting the default value of a function argument to a literal. In the future, we'll add support for additioanl features in Gin, such as allowing values to be references to other values in your Julia program or configuration.
 
 # Installation
 In a Julia REPL,
