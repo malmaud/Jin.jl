@@ -1,0 +1,4 @@
+f.x=15
+# a comement followed by a blank line
+
+g.name = "from_config"
