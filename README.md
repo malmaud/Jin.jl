@@ -36,7 +36,8 @@ With Jin, we'll able to set the learning rate in a configuration file with no ad
 ```julia
 using Jin
 
-@Jin.configurable train(data; learning_rate=.01)
+@Jin.configurable function train(data; learning_rate=.01)
+    @show learning_rate
    ...
 end
 
@@ -58,14 +59,14 @@ load_data.dataset = "imagenet"
 train.learning_rate = .005
 ```
 
-Now you'll see 
+Now when you run your Julia program, you'll see 
 
 ```
 dataset = "imagenet"
 learning_rate = .005
 ``` 
 
-when you run this script, indicating that the configuration file has changed the value of the learning rate and dataset.
+, indicating that the configuration file has changed the value of the learning rate and dataset.
 
 
 
