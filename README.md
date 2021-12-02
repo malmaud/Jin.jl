@@ -95,7 +95,7 @@ Jin.load_config("my_config.jin")
 y = linear_layer(x, w, b)
 ```
 
-And in the config,
+And in `my_config.jin`,
 
 ```
 linear_layer.activation = @sigmoid
