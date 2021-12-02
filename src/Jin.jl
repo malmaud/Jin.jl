@@ -3,6 +3,7 @@ using MacroTools
 
 jind = Dict()
 jind_original = Dict()
+references = Dict()
 
 function reset()
     empty!(jind)
@@ -29,16 +30,39 @@ function process_expr(ex)
     assign_blocks, ex
 end
 
+macro register(f_ex)
+    name = splitdef(f_ex)[:name]
+    quote
+        $(esc(f_ex))
+        Jin.references[$(Meta.quot(name))] = $(esc(name))
+    end
+end
+
 macro configurable(f_ex)
     assign_blocks, f_ex_new = process_expr(f_ex)
+    name = splitdef(f_ex)[:name]
     quote
         $(assign_blocks...)
         $(esc(f_ex_new))
+        Jin.references[$(Meta.quot(name))] = $(esc(name))
     end
 end
 
 function parse_value(value)
-    return Meta.parse(value)
+    value = strip(value)
+    if isempty(value)
+        throw("value can't be empty")
+    end
+    # This is a reference
+    if value[1] == '@'
+        ref_name = value[2:end] |> Symbol
+        if !haskey(references, ref_name)
+            throw("No reference to $ref_name found")
+        end
+        return references[ref_name]
+    else
+        return Meta.parse(value)
+    end
 end
 
 function parse_file(text)
