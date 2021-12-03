@@ -87,7 +87,7 @@ using Flux
 @Jin.register identity(x) = x
 
 function linear_layer(x, w, b; activation=identity)
-  return x*w + b
+  return activation(x*w + b)
 end
 
 Jin.load_config("my_config.jin")
